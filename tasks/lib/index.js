@@ -98,7 +98,7 @@ var createAndUploadArtifacts = function (options, done) {
             var childProcess = exec(curlCmd, execOptions, function () {
             });
             childProcess.stdout.on('data', function (data) {
-                status = data;
+                status = data.toString('utf-8');
             });
             childProcess.on('close', function (code) {
                 if (status.substring(0, 1) == "2" || code == 0) {
